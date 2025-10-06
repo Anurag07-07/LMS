@@ -6,6 +6,7 @@ export const app = expres()
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import dbConnext from './db/dbConnect.js'
+import { ErrorMiddleware } from './middlewares/error.js'
 
 //Body Parser:Limit Data Upto 50mb
 app.use(expres.json({limit:"50mb"}))
@@ -29,6 +30,8 @@ app.get('/test',(req:Request,res:Response)=>{
   })
 })
 
+
+app.use(ErrorMiddleware)
 //Unknown Route
 // app.all('*',(req:Request,res:Response,next:NextFunction)=>{
 //   const err = new Error(`Route ${req.originalUrl} not Found`) as any
