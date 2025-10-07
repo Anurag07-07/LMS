@@ -7,6 +7,6 @@ if (!REDIS_URI) {
 }
 export const redisClient = new Redis(REDIS_URI);
 redisClient.on('connect', () => {
-    console.log("Ioredis client Connected Successfully to Redis server.");
+    console.log("Ioredis Client Connected Successfully to Redis server.");
 });
 //# sourceMappingURL=redis.js.map

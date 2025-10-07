@@ -1,0 +1,117 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LMS Activation Email</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #f4f6f9;
+      color: #333333;
+    }
+
+    .email-container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+    }
+
+    .email-header {
+      background: linear-gradient(135deg, #007bff, #00b4d8);
+      color: #ffffff;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    .email-header h1 {
+      font-size: 28px;
+      margin: 0;
+      letter-spacing: 1px;
+    }
+
+    .email-body {
+      padding: 30px 25px;
+      line-height: 1.7;
+      font-size: 16px;
+      color: #444444;
+    }
+
+    .email-body h2 {
+      color: #007bff;
+      font-size: 22px;
+      margin-top: 10px;
+      margin-bottom: 25px;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+
+    .activation-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #007bff, #00b4d8);
+      color: #ffffff;
+      padding: 12px 28px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+
+    .activation-button:hover {
+      background: linear-gradient(135deg, #0056b3, #0077b6);
+    }
+
+    .email-footer {
+      text-align: center;
+      font-size: 14px;
+      color: #888888;
+      padding: 20px;
+      border-top: 1px solid #eeeeee;
+      background: #f9fafb;
+    }
+
+    .email-footer a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .email-footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="email-container">
+    <div class="email-header">
+      <h1>Welcome to <%= process.env.APP_NAME || "LMS" %></h1>
+    </div>
+
+    <div class="email-body">
+      <p>Hi <strong><%= user.name %></strong>,</p>
+      <p>Thank you for joining <%= process.env.APP_NAME || "our LMS" %>! To activate your account, please use the activation code below:</p>
+      
+      <h2><%= activationCode %></h2>
+
+      <p>Click the button below to activate your account:</p>
+      <p style="text-align:center;">
+        <a href="<%= activationLink %>" class="activation-button">Activate Account</a>
+      </p>
+
+      <p>This code is valid for the next <strong>5 minutes</strong>. If you didn’t sign up, you can safely ignore this email.</p>
+    </div>
+
+    <div class="email-footer">
+      <p>If you have any questions, feel free to contact us at 
+        <a href="mailto:support@lms.com">support@lms.com</a>
+      </p>
+      <p>© <%= new Date().getFullYear() %> <%= process.env.APP_NAME || "LMS" %>. All rights reserved.</p>
+    </div>
+  </div>
+</body>
+</html>

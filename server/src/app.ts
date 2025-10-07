@@ -8,6 +8,8 @@ import cookieParser from 'cookie-parser'
 import dbConnext from './db/dbConnect.js'
 import { ErrorMiddleware } from './middlewares/error.js'
 
+import userrouter from './routes/user.route.js'
+
 //Body Parser:Limit Data Upto 50mb
 app.use(expres.json({limit:"50mb"}))
 
@@ -21,6 +23,8 @@ app.use(cors({
 
 //Database Connection
 dbConnext()
+
+app.use('/api/v1',userrouter)
 
 //Testing Api
 app.get('/test',(req:Request,res:Response)=>{
